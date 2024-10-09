@@ -26,4 +26,4 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return {"Haki Master  ": "GG world"}
+    return {"Message": "GG world"}
