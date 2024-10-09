@@ -26,6 +26,8 @@ class User(Base):
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     phone_number = Column(String)
+    address = Column(String)
+    zip_code = Column(String)
 
 
 class Vote(Base):
