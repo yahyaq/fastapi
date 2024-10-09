@@ -28,7 +28,7 @@ class User(Base):
                         nullable=False, server_default=text('now()'))
     phone_number = Column(String)
     address = Column(String)
-    zip_code = Column(String)
+    zip_code = Column(Integer)
 
 
 class Vote(Base):
