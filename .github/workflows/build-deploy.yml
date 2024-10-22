@@ -4,6 +4,14 @@ on: [push, pull_request]
 
 jobs:
   job1:
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+          POSTGRES_HOST: ${{secrets.DATABASE_HOSTNAME}}
+          POSTGRES_PORT: ${{secrets.DATABASE_PORT}}
+
     environment:
       name: testing
     env:
@@ -28,14 +36,9 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: install all dependencies
         run: pip install -r requirements.txt
+      - name: connect to postgres
+        run: node client.js
       - name: test with pytest
         run: |
           pip install pytest
           pytest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
-          POSTGRES_HOST: ${{secrets.DATABASE_HOSTNAME}}
-          POSTGRES_PORT: ${{secrets.DATABASE_PORT}}
