@@ -32,3 +32,10 @@ jobs:
         run: |
           pip install pytest
           pytest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+          POSTGRES_HOST: ${{secrets.DATABASE_HOSTNAME}}
+          POSTGRES_PORT: ${{secrets.DATABASE_PORT}}
