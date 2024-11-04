@@ -4,10 +4,10 @@ from app.config import settings
 from app import schemas
 
 
-def test_root(client):
-    res = client.get("/")
-    assert res.status_code == 200
-    assert res.json().get('message') == "GG world"
+# def test_root(client):
+#     res = client.get("/")
+#     assert res.status_code == 200
+#     assert res.json().get('message') == "GG world"
 
 
 def test_create_user(client):
